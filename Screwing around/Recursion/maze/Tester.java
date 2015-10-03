@@ -1,6 +1,6 @@
 package maze;
 
-public class MazeEscape {
+public class Tester {
 	public static void main(String args[])
 	{
 	   char[][] m = {

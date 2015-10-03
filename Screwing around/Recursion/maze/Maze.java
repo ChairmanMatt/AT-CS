@@ -1,19 +1,19 @@
 package maze;
+
 import java.util.ArrayList;
+
 public class Maze {
 	private int xExit, yExit,xpos,ypos;
 	private char[][] maze;
 	private ArrayList<String> steps = new ArrayList<String>();
 	
-	public Maze(char[][] maze, int xpos,int ypos)
-	{
+	public Maze(char[][] maze, int xpos,int ypos){
 		this.maze=maze;
 		this.xpos=xpos;
 		this.ypos=ypos;
 	}
 	
-	public void display()
-	{
+	public void display(){
 		for(char[] i:maze){
 			System.out.println();
 			for(char c:i)
@@ -21,13 +21,11 @@ public class Maze {
 		}
 	}
 
-	public boolean findExit() 
-	{
+	public boolean findExit() {
 		return findExit(xpos,ypos);
 	}
 	
-	private boolean findExit(int xpos,int ypos)
-	{
+	private boolean findExit(int xpos,int ypos){
 		if(xpos == 0 || ypos == 0 || xpos == maze.length-1 || ypos == maze[0].length-1)
 		{
 			xExit=xpos;
@@ -72,23 +70,17 @@ public class Maze {
 
 	}
 
-	public int getXExit() 
-	{
+	public int getXExit() {
 		return xExit;
 	}
 
-	public int getYExit() 
-	{
+	public int getYExit() {
 		return yExit;
 	}
 
-	public void getSteps() 
-	{
+	public void getSteps() {
 		for(String i:steps)
 			System.out.println(i);
 	}
-	
-	
-	
 
 }
