@@ -14,7 +14,7 @@ public class Word {
 		numOccurrences++;
 	}
 	
-	public int getNumOccurrences(){
+	public int getNumOccurences(){
 		return numOccurrences;
 	}
 	
@@ -23,5 +23,3 @@ public class Word {
 	}
 	
 }
-
-     
