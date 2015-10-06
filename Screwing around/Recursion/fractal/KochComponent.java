@@ -1,6 +1,5 @@
 package fractal;
 
-
 import java.awt.Graphics;
 
 import java.awt.Graphics2D;
@@ -19,6 +18,11 @@ import java.awt.geom.GeneralPath;
 
 import java.awt.Polygon;
 
+/**
+ * INTENTION IS TO MAKE A RECTANGLE BASED FRACTAL
+ * @author 16ML0369
+ *
+ */
 
 public class KochComponent extends JComponent
 
@@ -29,29 +33,15 @@ public class KochComponent extends JComponent
 	private int length; 
 
 	public KochComponent(int iters, int aLength)
-
 	{
-
-
-
 		numIterations = iters;
-
 		length = aLength;
-
-
-
-
-
-
-
 	}
 
 
 
 	public void paintComponent(Graphics g)
-
 	{
-
 		Graphics2D g2 = (Graphics2D) g;
 
 		KochLine koch = new KochLine();
@@ -79,9 +69,7 @@ public class KochComponent extends JComponent
 
 
 	public static void main(String[] args)
-
 	{
-
 		JFrame frame = new JFrame();
 
 		final int FRAME_WIDTH = 360;
