@@ -28,7 +28,7 @@ public class IntSet {
 	
 	public String toString(){
 		if(x != 0){
-			if(y > 1 || (y > 0 && y < 1) || y < 0)
+			if(y > 1 || y < 0)
 				return x+"x^"+y;
 			else if(y==1)
 				return x+"x";
