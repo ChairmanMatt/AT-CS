@@ -6,15 +6,23 @@ import java.util.ListIterator;
 public class AlgebraCalc {
 
 	public static void main(String[] args) {
-		Term s = new Term();
-		s.add(new IntSet(3, 5));
-		s.add(new IntSet(3, 5));
-		s.add(new IntSet(3, 5));
+		Polynomial s = new Polynomial();
+		s.add(new Term(3, 5));
+		System.out.println("s: " + s);
 		
-		Term q = new Term();
-		q.add(new IntSet(3,3));
-
-		System.out.println(s.toString());
+		Polynomial q = new Polynomial();
+		q.add(new Term(2,5));
+		System.out.println("q: " + q);
+		
+		Polynomial r = new Polynomial();
+		r.add(new Term(4,6));
+		System.out.println("r: " + r);
+		
+		s.add(new Term(2,5));
+		System.out.println("s + q: " + s.toString());
+		
+		q.multiply(new Term(4, 6));
+		System.out.println("q * r: " + q.toString());
 		
 	}
 
