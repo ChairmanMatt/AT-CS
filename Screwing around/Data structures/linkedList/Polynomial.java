@@ -1,5 +1,6 @@
 package linkedList;
 
+import java.util.AbstractList;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
@@ -81,6 +82,51 @@ public class Polynomial {
 			cursor.add(current);
 		}
 	}
+
+	public LinkedList<Term> multiplyTerm(Term thing, LinkedList<Term> newThing){
+		ListIterator<Term> newC = newThing.listIterator();
+		Term current;
+		while(newC.hasNext()){
+			current = newC.next();
+			current.setX(current.getX() * thing.getX());
+			current.setY(current.getY() + thing.getY());
+			newC.previous();
+			newC.remove();
+			newC.add(current);
+		}
+		return newThing;
+	}
+
+	public void multiply(Polynomial p){
+		cursor = expression.listIterator();
+
+		LinkedList<Term> expCopy = new LinkedList<Term>();
+
+		while(cursor.hasNext()){
+			expCopy.addLast(cursor.next());
+		}
+
+		LinkedList<Term> toAdd = new LinkedList<Term>();
+		ListIterator<Term> pIter = p.getList().listIterator();
+
+		while(pIter.hasNext()){
+			LinkedList<Term> hue = multiplyTerm(pIter.next(), expCopy);
+			ListIterator<Term> hueIter = hue.listIterator();
+			while(hueIter.hasNext())
+				toAdd.addLast(hueIter.next());
+
+			expCopy = new LinkedList<Term>();
+			cursor=expression.listIterator();
+			while(cursor.hasNext()){
+				expCopy.addLast(cursor.next());
+			}
+		}
+
+		expression = toAdd;
+		sort();
+
+	}
+
 
 	public LinkedList<Term> derivative(){
 		LinkedList<Term> ret = new LinkedList<Term>();

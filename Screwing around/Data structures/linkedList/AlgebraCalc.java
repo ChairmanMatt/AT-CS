@@ -11,19 +11,14 @@ public class AlgebraCalc {
 		System.out.println("s: " + s);
 		
 		Polynomial q = new Polynomial();
-		q.add(new Term(2,5));
+		q.add(new Term(2, 2));
+		q.add(new Term(1, 1));
+		q.add(new Term(3, 2));
 		System.out.println("q: " + q);
 		
-		Polynomial r = new Polynomial();
-		r.add(new Term(4,6));
-		System.out.println("r: " + r);
+		s.add(q);
 		
-		s.add(new Term(2,5));
-		System.out.println("s + q: " + s.toString());
-		
-		q.multiply(new Term(4, 6));
-		System.out.println("q * r: " + q.toString());
-		
+		System.out.println(s.toString());
 	}
 
 }
