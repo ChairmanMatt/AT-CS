@@ -13,10 +13,9 @@ public class AlgebraCalc {
 		Polynomial q = new Polynomial();
 		q.add(new Term(2, 2));
 		q.add(new Term(1, 1));
-		q.add(new Term(3, 2));
 		System.out.println("q: " + q);
 		
-		s.add(q);
+		s.multiply(q);
 		
 		System.out.println(s.toString());
 	}

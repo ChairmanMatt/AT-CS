@@ -88,9 +88,7 @@ public class Polynomial {
 		Term current;
 		while(newC.hasNext()){
 			current = newC.next();
-			current.setX(current.getX() * thing.getX());
-			current.setY(current.getY() + thing.getY());
-			newC.previous();
+			current = new Term(current.getX() * thing.getX(), current.getY() + thing.getY());
 			newC.remove();
 			newC.add(current);
 		}
@@ -98,33 +96,31 @@ public class Polynomial {
 	}
 
 	public void multiply(Polynomial p){
+		ListIterator<Term> pIter = p.getList().listIterator();
 		cursor = expression.listIterator();
 
-		LinkedList<Term> expCopy = new LinkedList<Term>();
-
+		LinkedList<Term> newExp = new LinkedList<Term>();
 		while(cursor.hasNext()){
-			expCopy.addLast(cursor.next());
+			newExp.addLast(cursor.next());
 		}
 
+		cursor = expression.listIterator();
+
 		LinkedList<Term> toAdd = new LinkedList<Term>();
-		ListIterator<Term> pIter = p.getList().listIterator();
-
+		
 		while(pIter.hasNext()){
-			LinkedList<Term> hue = multiplyTerm(pIter.next(), expCopy);
-			ListIterator<Term> hueIter = hue.listIterator();
-			while(hueIter.hasNext())
-				toAdd.addLast(hueIter.next());
-
-			expCopy = new LinkedList<Term>();
-			cursor=expression.listIterator();
+			toAdd.addAll(multiplyTerm(pIter.next(), newExp));
+			
+			//reset copy of expression
+			cursor = expression.listIterator();
+			newExp = new LinkedList<Term>();
 			while(cursor.hasNext()){
-				expCopy.addLast(cursor.next());
+				newExp.addLast(cursor.next());
 			}
 		}
 
 		expression = toAdd;
 		sort();
-
 	}
 
 
