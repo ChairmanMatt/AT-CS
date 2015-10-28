@@ -1,4 +1,4 @@
-package linkedList;
+package polynomial;
 
 public class Term {
 

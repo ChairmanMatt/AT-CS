@@ -1,4 +1,4 @@
-package linkedList;
+package polynomial;
 
 import java.util.AbstractList;
 import java.util.LinkedList;

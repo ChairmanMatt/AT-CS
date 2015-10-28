@@ -1,4 +1,4 @@
-package linkedList;
+package polynomial;
 
 import java.util.LinkedList;
 import java.util.ListIterator;
