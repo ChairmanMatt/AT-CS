@@ -1,4 +1,4 @@
-package worksheets_10_28;
+package worksheet_1;
 
 import java.util.LinkedList;
 import static java.lang.System.*;

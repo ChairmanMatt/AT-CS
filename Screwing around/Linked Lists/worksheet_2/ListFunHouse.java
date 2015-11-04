@@ -1,4 +1,4 @@
-package worksheets_10_29_30;
+package worksheet_2;
 
 import static java.lang.System.*;
 
@@ -13,7 +13,7 @@ public class ListFunHouse
 		}
 
 	}		
-	
+
 	//CONFIRMED WORKS
 	//this method will return the number of nodes present in list
 	public static int nodeCount(ListNode list)
@@ -43,14 +43,14 @@ public class ListFunHouse
 	public static void doubleLast(ListNode list)
 	{
 		ListNode prev = new ListNode();
-		
+
 		Object value = new Object();
-		
+
 		Boolean alreadyRun = false;
-		
+
 		while(list != null){
 			prev.setNext(new ListNode(list.getValue(), null));
-			
+
 			ListNode test = list.getNext();
 			if(test == null && ! alreadyRun){
 				alreadyRun = true;
@@ -73,38 +73,38 @@ public class ListFunHouse
 	//this method will set the value of every xth node in the list
 	public static void setXthNode(ListNode list, int x, Comparable value)
 	{
-		ListNode prev = new ListNode();
 		int count=1;
 
 		while(list != null){
 			if(count != x){
-				prev.setNext(new ListNode(list.getValue(), null));
+				list = list.getNext();
 			}
 			else{
-				prev.setNext(new ListNode(value, null));
+				list.setValue(value);
+				list = list.getNext();
 			}
-
-			list = list.getNext();
-
 			count++;
 		}
-
-		list = prev;
 	}	
 
 	//TODO
 	//this method will remove the xth node in the list
 	public static void removeXthNode(ListNode list, int x)
 	{
-		ListNode prev = new ListNode();
-		int count=1;
+		int counter = 1;
+		ListNode temp = list;
+		ListNode prev = null;
 
-		while(list != null){
-			if(p54)
-			prev.setNext(list.getNext());
+		while(temp.getNext() != null){
+			if(counter%x == 0){
+				prev.setNext(temp.getNext());
+			}
 			
-			count++;
-			list = list.getNext();
+			prev = temp;
+			temp = temp.getNext();
+			counter++;
 		}
+		
+		temp = null;
 	}		
 }

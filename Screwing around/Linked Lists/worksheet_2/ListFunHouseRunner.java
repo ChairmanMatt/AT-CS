@@ -1,4 +1,4 @@
-package worksheets_10_29_30;
+package worksheet_2;
 
 import java.util.*;
 import static java.lang.System.*;
@@ -37,7 +37,7 @@ public class ListFunHouseRunner
 		out.println("\nList values after calling doubleLast\n");							
 		ListFunHouse.print(z);
 		out.println();				
-				
+		
 		ListFunHouse.removeXthNode(z,2);		
 		out.println("\nList values after calling removeXthNode(2)\n");					
 		ListFunHouse.print(z);
