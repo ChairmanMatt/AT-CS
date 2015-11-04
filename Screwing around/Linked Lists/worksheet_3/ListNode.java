@@ -4,20 +4,18 @@ public class ListNode implements Linkable
 {
 	private Comparable listNodeValue;
 	private ListNode nextListNode;
-	private ListNode previousListNode;
+	private ListNode prevListNode;
 
 	public ListNode()
 	{
 		listNodeValue = null;
 		nextListNode = null;
-		previousListNode = null;
 	}
 
-	public ListNode(Comparable value, ListNode next, ListNode previous)
+	public ListNode(Comparable value, ListNode next)
 	{
 		listNodeValue=value;
 		nextListNode=next;
-		previousListNode = previous;
 	}
 
 	public Comparable getValue()
@@ -30,8 +28,9 @@ public class ListNode implements Linkable
 	   return nextListNode;
 	}
 	
-	public ListNode getPrevious(){
-		return previousListNode;
+	public ListNode getLast()
+	{
+	   return prevListNode;
 	}
 
 	public void setValue(Comparable value)
@@ -44,8 +43,8 @@ public class ListNode implements Linkable
 		nextListNode = (ListNode)next;
 	}
 	
-	public void setPrevious(Linkable prev){
-		previousListNode = (ListNode) prev;
+	public void setLast(Linkable next)
+	{
+		nextListNode = (ListNode)next;
 	}
-	
 }
