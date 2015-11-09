@@ -4,7 +4,6 @@ public class ListNode implements Linkable
 {
 	private Comparable listNodeValue;
 	private ListNode nextListNode;
-	private ListNode prevListNode;
 
 	public ListNode()
 	{
@@ -28,10 +27,6 @@ public class ListNode implements Linkable
 	   return nextListNode;
 	}
 	
-	public ListNode getLast()
-	{
-	   return prevListNode;
-	}
 
 	public void setValue(Comparable value)
 	{
@@ -43,8 +38,5 @@ public class ListNode implements Linkable
 		nextListNode = (ListNode)next;
 	}
 	
-	public void setLast(Linkable next)
-	{
-		nextListNode = (ListNode)next;
-	}
+
 }
