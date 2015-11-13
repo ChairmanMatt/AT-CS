@@ -39,19 +39,19 @@ public class HistoListRunner
 
 		//A B C A B C A B C A B C A B C
 		test = new HistoList();
-		test.addLetter('A');
+		test.addLetter('A');//
 		test.addLetter('B');
 		test.addLetter('C');
-		test.addLetter('A');
+		test.addLetter('A');//
 		test.addLetter('B');
 		test.addLetter('C');
-		test.addLetter('A');
+		test.addLetter('A');//
 		test.addLetter('B');
 		test.addLetter('C');
-		test.addLetter('A');
+		test.addLetter('A');//
 		test.addLetter('B');
 		test.addLetter('C');
-		test.addLetter('A');
+		test.addLetter('A');//
 		test.addLetter('B');
 		test.addLetter('C');
 		System.out.println("TEST 3 "+test);
