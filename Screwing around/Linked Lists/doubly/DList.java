@@ -25,13 +25,16 @@ public class DList {
 	 */
 	public void addFirst(Object o) {	
 		if(isEmpty()){
-			firstNode = new DListNode(o, null, null);
-			lastNode = firstNode;
+			firstNode = new DListNode(o, lastNode, null);
 			return;
 		}
 		
-		DListNode toAdd = new DListNode(o, firstNode, null);	
-		firstNode.setPrevious(toAdd);
+		DListNode toAdd = new DListNode(o, firstNode, null);
+		
+		if(lastNode == null)
+			lastNode = firstNode;
+		
+		firstNode = toAdd;
 		
 	}
 	
@@ -40,13 +43,15 @@ public class DList {
 	 */
 	public void addLast(Object o) {
 		if(isEmpty()){
-			firstNode = new DListNode(o, null, null);
-			lastNode = firstNode;
+			addFirst(o);
 			return;
 		}
 		
+		if(firstNode == null)
+			firstNode = lastNode;
+		
 		DListNode toAdd = new DListNode(o, null, lastNode);
-		lastNode.setNext(toAdd);
+		lastNode = toAdd;
 	}
 
 	/**
@@ -76,8 +81,8 @@ public class DList {
 		DListNode temp = firstNode;
 		String toRet = "";
 		
-		while(firstNode.getNext() != null){
-			toRet += (String) temp.getValue();
+		while(temp.getNext() != null){
+			toRet += (String) temp.getValue()+" ";
 			
 			temp = temp.getNext();
 		}
@@ -92,7 +97,7 @@ public class DList {
 		DListNode temp = firstNode;
 		int counter = 0;
 		
-		while(firstNode.getNext() != null){
+		while(temp.getNext() != null){
 			counter++;
 			temp = temp.getNext();
 		}
@@ -116,6 +121,13 @@ public class DList {
 
 	}
 
+	public DListNode getFirst(){
+		return firstNode;
+	}
+	
+	public DListNode getLast(){
+		return lastNode;
+	}
 
 
 }
