@@ -46,12 +46,11 @@ public class DList {
 			addFirst(o);
 			return;
 		}
-		
-		if(firstNode == null)
-			firstNode = lastNode;
-		
+
 		DListNode toAdd = new DListNode(o, null, lastNode);
+		lastNode.setNext(toAdd);
 		lastNode = toAdd;
+
 	}
 
 	/**
@@ -65,6 +64,8 @@ public class DList {
 	}
 
 	/**
+	 * 
+	 * TODO
 	 * Removes and returns the last element of this list.
 	 */
 	public Object removeLast(){
@@ -87,7 +88,10 @@ public class DList {
 			temp = temp.getNext();
 		}
 		
-		return toRet;
+		return toRet + (String) temp.getValue() +" ";
+		
+		
+//		 + (String) lastNode.getValue()
 	}
 
 	/**
@@ -95,7 +99,7 @@ public class DList {
 	 */
 	public int size() {
 		DListNode temp = firstNode;
-		int counter = 0;
+		int counter = 1;
 		
 		while(temp.getNext() != null){
 			counter++;
@@ -121,10 +125,14 @@ public class DList {
 
 	}
 
+	/**
+	 */
 	public DListNode getFirst(){
 		return firstNode;
 	}
-	
+	/**
+	 * Returns last node
+	 */
 	public DListNode getLast(){
 		return lastNode;
 	}

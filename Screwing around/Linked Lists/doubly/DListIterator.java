@@ -5,28 +5,26 @@ public class DListIterator  {
 	private DListNode next;
 	private DListNode previous;
 	private DList myList;
-	private boolean forward;
 	private boolean canRemove; // for remove() method. true if OK to call remove()
 
 	public DListIterator(DList list) {
 		myList = list;
 		next = list.getFirst();
 		previous = null;
-		if(list.isEmpty() || previous == null || next == null)
+
+		canRemove = true;
+		if(list.isEmpty() || previous == null)
 			canRemove = false;
-		else
-			canRemove = true;
 	}
-	
+
 	public void canRemove(){
-		if(myList.isEmpty() || previous == null || next == null)
+		canRemove = true;
+		if(myList.isEmpty() || previous == null)
 			canRemove = false;
-		else
-			canRemove = true;
 	}
 
 	public String toString(){
-		return (String) next.getValue();
+		return (String) previous.getValue();
 	}
 
 	public boolean hasPrevious(){
@@ -34,15 +32,14 @@ public class DListIterator  {
 	}
 
 	public boolean hasNext(){
-		return !(next.getNext() == null);
+		return !(next == null);
 	}
 
 	public Object next(){
-		forward=true;
 		if(next == null){
 			return null;
 		}
-			
+
 		else { 
 			Object temp = next.getValue();
 			previous = next;
@@ -52,10 +49,9 @@ public class DListIterator  {
 	}
 
 	public Object previous(){
-		forward=false;
 		if(previous == null)
 			return null;
-		
+
 		else { 
 			Object temp = previous.getValue();
 			next = previous;
@@ -66,20 +62,27 @@ public class DListIterator  {
 	}
 
 	public void remove(){
-		if(!canRemove)
-			return;
-		canRemove();
-		if(forward)
-			previous=previous.getPrevious();
-		else
-			next=next.getNext();
+		if(previous != null){
+			previous = previous.getPrevious();
+
+			if(previous == null)
+				return;
+
+			previous.setNext(next);
+			next.setPrevious(previous.getPrevious());
+		}
 	}
 
 	public void add(Object element){
 		DListNode temp = new DListNode(element, next, previous);
 		next.setPrevious(temp);
+		if(previous==null){
+			previous = temp;
+			return;
+		}
 		previous.setNext(temp);
 		previous = previous.getNext();
+
 	}
 
 	public void set(Object element){

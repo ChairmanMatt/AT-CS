@@ -37,6 +37,8 @@ public class DListNode {
 		this.previous = previous;
 	}
 
-	
+	public String toString(){
+		return (String) value;
+	}
 	
 }
