@@ -12,6 +12,8 @@ public class StackMethods {
 
         a.push(7);
 
+        System.out.println(getAverage(a));
+        
         Stack<String> b = new Stack<String>();
 
         b.push("one");

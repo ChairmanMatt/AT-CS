@@ -43,7 +43,7 @@ public class MyQueueLinkedList implements MyQueue {
 		
 		while(iter.hasNext() && counter < thingy.size()){
 			if(iter.next().equals(a)){
-				return counter;
+				return counter+1;
 			}
 			counter++;
 		}
