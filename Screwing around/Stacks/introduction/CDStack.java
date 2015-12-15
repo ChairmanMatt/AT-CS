@@ -87,21 +87,12 @@ public class CDStack {
 	}
 
 	public void binaryThing(int num, boolean wasModded){
-		if(num <= 1)
-			return;
-		
-		if(wasModded = false){
-			myStack.push((num % 2)+" ");
-			num = num % 2;
-			binaryThing(num, true);
+		while(num >= 1){
+			myStack.push((num % 2)+"");
+			num /= 2;
 		}
-		else{
-			num = num / 2;
-			binaryThing(num, false);
-		}
-		
 	}
-	
+
 	public static void main(String[] args){
 		CDStack cds = new CDStack();
 		cds.binaryThing(34, false);
