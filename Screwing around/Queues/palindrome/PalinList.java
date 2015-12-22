@@ -22,21 +22,25 @@ public class PalinList
 
 	public void setList(String list)
 	{
-		Queue<String> queue = new LinkedList<String>();
-		Stack<String> stack = new Stack<String>();
+		queue = new LinkedList<String>();
+		stack = new Stack<String>();
 		
 		while(list.length() > 0){
 			queue.offer(list.substring(0,1));
 			stack.push(list.substring(0,1));
 			list = list.substring(1);
+			System.out.println(list);
 		}
 	}
 
 	public boolean isPalin()
 	{
-		while(stack.peek() != null){
-			if(stack.pop().equals(queue.poll()))
+		while(stack.peek() != null && queue.peek() != null){
+			if(stack.peek().compareTo(queue.peek()) != 0)
 				return false;
+			
+			stack.pop();
+			queue.poll();
 		}
 		return true;
 	}
@@ -45,8 +49,8 @@ public class PalinList
 	public String toString(){
 		
 		String toRet = "";
-		while(queue != null){
-			toRet += queue.poll()+" ";
+		while(queue.peek() != null){
+			toRet += queue.poll()+"";
 		}
 		return toRet;
 	}

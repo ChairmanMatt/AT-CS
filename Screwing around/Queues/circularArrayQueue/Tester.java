@@ -5,6 +5,7 @@ public class Tester {
 	public static void main(String[] args) {
 
 		ArrayQueueExtendable a = new ArrayQueueExtendable(10);
+//		ArrayQueue a = new ArrayQueue(10);
 
 		a.add(1);
 		a.add(2);
@@ -17,7 +18,6 @@ public class Tester {
 		a.add(9);
 
 		System.out.println(a);
-
 		System.out.println("NEXT: " +a.remove());
 		System.out.println("NEXT: "+a.remove());
 		System.out.println("NEXT: "+a.remove());
