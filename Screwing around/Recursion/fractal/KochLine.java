@@ -9,21 +9,13 @@ public class KochLine
 
 {
 
-	public void draw(Graphics2D g2, int iteration, double x1, double y1, double x2, double y2)
-
-	{
-
-		if (iteration == 1)
-
-		{
-
+	public void draw(Graphics2D g2, int iteration, double x1, double y1, double x2, double y2){
+		if (iteration == 1){
 			g2.draw(new Line2D.Double(x1, y1, x2, y2));
 
 		}
 
-		else
-
-		{
+		else{
 			//difference between points
 			double dx = Math.abs((x2 - x1) / 3);
 
