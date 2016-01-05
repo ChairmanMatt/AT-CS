@@ -9,6 +9,8 @@ public class PalinList
 {
 	private Queue<String> queue;
 	private Stack<String> stack;
+	private String QSstr;
+
 
 	public PalinList()
 	{
@@ -18,40 +20,48 @@ public class PalinList
 	public PalinList(String list)
 	{
 		setList(list);
+
 	}
 
 	public void setList(String list)
 	{
+		QSstr = list;
 		queue = new LinkedList<String>();
 		stack = new Stack<String>();
-		
+
+		String str;
+
 		while(list.length() > 0){
-			queue.offer(list.substring(0,1));
-			stack.push(list.substring(0,1));
-			list = list.substring(1);
-			System.out.println(list);
+
+			if(list.indexOf(" ") != -1){
+				str = list.substring(0,list.indexOf(" "));
+			}
+			
+			str = list;
+			queue.offer(str);
+			stack.push(str);
+			list = list.substring(list.indexOf(" "));
 		}
+
 	}
 
 	public boolean isPalin()
 	{
-		while(stack.peek() != null && queue.peek() != null){
+		while(queue.peek() != null && stack.peek() != null){
 			if(stack.peek().compareTo(queue.peek()) != 0)
 				return false;
-			
 			stack.pop();
 			queue.poll();
 		}
+
 		return true;
 	}
 
 
 	public String toString(){
-		
-		String toRet = "";
-		while(queue.peek() != null){
-			toRet += queue.poll()+"";
-		}
-		return toRet;
+		System.out.println("S Size "+stack.size());
+		System.out.println("Q Size "+queue.size());
+
+		return QSstr;
 	}
 }
