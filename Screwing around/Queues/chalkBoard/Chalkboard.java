@@ -68,16 +68,20 @@ public class Chalkboard extends JComponent{
 			points.add(x);
 			points.add(y);
 
-
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(1100);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 
-		System.out.println("SIZE OF QUEUE: "+points.size());
+//		System.out.println("SIZE OF QUEUE: "+points.size());
 		
 		g2.setColor(new Color(255255));
 		
@@ -85,13 +89,17 @@ public class Chalkboard extends JComponent{
 		int y1 = 384;
 		int x2;
 		int y2;
-//		
-//		
-//		while(points.peek() != null){
-//			x2 = 
-//
-//			thing.draw(g2, points.poll(), points.poll(), points.poll(), points.poll());
-//		}
+		
+		
+		while(points.peek() != null){
+			x2 = points.poll();
+			y2 = points.poll();
+
+			thing.draw(g2, x1, y1, x2, y2);
+			
+			x1 = x2;
+			y1 = y2;
+		}
 
 	}
 

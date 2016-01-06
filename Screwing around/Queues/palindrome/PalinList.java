@@ -1,5 +1,4 @@
 package palindrome;
-//PalinLins.java
 
 import java.util.Queue;
 import java.util.Stack;
@@ -28,18 +27,14 @@ public class PalinList
 		QSstr = list;
 		queue = new LinkedList<String>();
 		stack = new Stack<String>();
+		
+		
+		String[] str = QSstr.split(" ");
+		
+		for(int ind = 0; ind < str.length; ind++){
 
-		String str;
-
-		while(list.length() > 0){
-
-			if(list.indexOf(" ") != -1){
-				str = list.substring(0,list.indexOf(" "));
-			}
-			
-			str = list;
-			queue.offer(str);
-			stack.push(str);
+			queue.offer(str[ind]);
+			stack.push(str[ind]);
 			list = list.substring(list.indexOf(" "));
 		}
 
