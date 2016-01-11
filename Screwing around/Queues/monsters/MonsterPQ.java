@@ -13,28 +13,41 @@ public class MonsterPQ
 
 	public MonsterPQ()
 	{
-		
+		pQueue = new PriorityQueue<Monster>();
 	}
 
 	public void add(Monster obj)
 	{
-	}
-	
-	public Object getMin()
-	{
-		return "";
-	}
-	
-	public Object removeMin()
-	{
-		return "";
-	}
-	
-	public String getNaturalOrder()
-	{
-		String output="";
-		return output;		
+		pQueue.offer(obj);
 	}
 
-	//write a toString method
+	public Object getMin()
+	{
+		return pQueue.peek();
+	}
+
+	public Object removeMin()
+	{
+		return pQueue.poll();
+	}
+
+	public String getNaturalOrder()
+	{
+		Queue<Monster> temp = new PriorityQueue<Monster>();
+
+		String retStr = "[";
+
+		while(pQueue.peek() != null){
+			temp.offer((Monster)(pQueue.peek().clone()));
+			retStr += pQueue.remove().toString();
+		}
+		retStr = retStr.substring(0,(retStr.length()-3))+"]";
+		pQueue = temp;
+
+		return retStr;
+	}
+
+	public String toString(){
+		return pQueue.toString();
+	}
 }

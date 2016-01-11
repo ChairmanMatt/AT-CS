@@ -76,7 +76,7 @@ public class Monster implements Comparable<Monster> {
 
 
 	public String toString( ) {
-		return "Height " + height + " Weight " + weight + " Age " + age;
+		return height + ", " + weight + ", " + age+" | ";
 	}
 
 }
