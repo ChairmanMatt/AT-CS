@@ -5,26 +5,39 @@ import java.util.ArrayList;
 
 public class LiverTransplantQueue implements PriorityQueue{
 
-	ArrayList<Patient> thingy = new ArrayList<Patient>();
+	ArrayList<PatientHolder> thingy = new ArrayList<PatientHolder>();
 	int timeAdded = 0;
 
 	public void add(Object o){
 		Patient p = (Patient) o;
 		
-		thingy.add(p);
+		thingy.add(new PatientHolder(p, timeAdded));
+		timeAdded++;
 	}
 
 	public Object peek(){
-		Patient min = thingy.get(0);
+		PatientHolder ph = thingy.get(0);
 
-		for(int x = 1; x<thingy.size(); x++){
-			if()
+		for(int x = 0; x<thingy.size(); x++){
+			if(thingy.get(x).compareTo(ph) < 0)
+				ph = thingy.get(x);
 		}
 		
+		return ph.getPatient();
 	}
 
 	public Object poll(){
-		return thingy.remove(0);
+		PatientHolder ph = thingy.get(0);
+		int leastIndex = 0;
+		
+		for(int x = 0; x<thingy.size(); x++){
+			if(thingy.get(x).compareTo(ph) < 0){
+				ph = thingy.get(x);
+				leastIndex = x;
+			}
+		}
+		
+		return thingy.remove(leastIndex).getPatient();
 	}
 
 	public int size(){
@@ -35,4 +48,20 @@ public class LiverTransplantQueue implements PriorityQueue{
 		return thingy.size() == 0;
 	}
 
+	public String toString(){
+		String toRet = "";
+		
+		Patient pat = (Patient) poll();
+		
+		toRet = pat.toString()+" ";
+		
+		for(int x = 0; x<thingy.size(); x++){
+			toRet+=thingy.get(x).getPatient().toString()+" ";
+		}
+		
+		add(pat);
+		
+		return toRet;
+	}
+	
 }

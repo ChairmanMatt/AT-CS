@@ -25,4 +25,8 @@ public class Patient implements Comparable{
 		
 		return 0;
 	}
+	
+	public String toString(){
+		return name;
+	}
 }

@@ -14,8 +14,6 @@ public class MonsterPQRunner
 		peekoo.add(new Monster(3,1,2));
 		peekoo.add(new Monster(3,3,3));
 
-		System.out.println("MIN GET "+peekoo.getMin());
-		System.out.println("MIN REV "+peekoo.removeMin());
 		System.out.println("\n\n");
 
 		System.out.println(peekoo);
@@ -24,8 +22,12 @@ public class MonsterPQRunner
 		System.out.println("MIN REV "+peekoo.removeMin());
 		System.out.println("\n\n");
 
+		System.out.println(peekoo);
+		System.out.println("MIN GET "+peekoo.getMin());
+		System.out.println("MIN REV "+peekoo.removeMin());
+		
+		System.out.println("NATURAL ORDER");
 		System.out.println(peekoo.getNaturalOrder());
-		System.out.println(peekoo.toString());
 
 	}
 }
