@@ -27,7 +27,6 @@ public class PQTester extends PriorityQueue
 		}
 	}
 
-
 	public void setPQ(String list)
 	{
 		pQueue = new PriorityQueue<String>();
