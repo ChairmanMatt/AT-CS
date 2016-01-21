@@ -60,7 +60,7 @@ public class MathSet
 		return overlap;
 	}
 
-	public Set<Integer> differenceAMinusB()
+	public Set<Integer> differenceBMinusA()
 	{
 		Set<Integer> aNotB = new TreeSet<Integer>();
 		Set<Integer> temp = new TreeSet<Integer>(); 
@@ -77,7 +77,7 @@ public class MathSet
 		return aNotB;
 	}
 
-	public Set<Integer> differenceBMinusA()
+	public Set<Integer> differenceAMinusB()
 	{
 		Set<Integer> bNotA = new TreeSet<Integer>();
 		Set<Integer> temp = new TreeSet<Integer>(); 
