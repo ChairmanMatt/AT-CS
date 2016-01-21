@@ -62,36 +62,22 @@ public class MathSet
 
 	public Set<Integer> differenceBMinusA()
 	{
-		Set<Integer> aNotB = new TreeSet<Integer>();
-		Set<Integer> temp = new TreeSet<Integer>(); 
-		temp.addAll(one);
-		Iterator<Integer> it = two.iterator();
-		int i;
+		Set<Integer> bNotA = new TreeSet<Integer>();
 		
-		while(it.hasNext()){
-			i = it.next();
-			if(temp.add(i))
-				aNotB.add(i);
-		}
+		bNotA.addAll(two);
+		bNotA.removeAll(one);
 		
-		return aNotB;
+		return bNotA;
 	}
 
 	public Set<Integer> differenceAMinusB()
 	{
-		Set<Integer> bNotA = new TreeSet<Integer>();
-		Set<Integer> temp = new TreeSet<Integer>(); 
-		temp.addAll(two);
-		Iterator<Integer> it = one.iterator();
-		int i;
+		Set<Integer> aNotB = new TreeSet<Integer>();
 		
-		while(it.hasNext()){
-			i = it.next();
-			if(temp.add(i))
-				bNotA.add(i);
-		}
+		aNotB.addAll(one);
+		aNotB.removeAll(two);
 		
-		return bNotA;
+		return aNotB;
 	}
 
 	public Set<Integer> symmetricDifference()
