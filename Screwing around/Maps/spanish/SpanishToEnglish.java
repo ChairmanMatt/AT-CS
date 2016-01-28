@@ -27,7 +27,7 @@ public class SpanishToEnglish
 			}
 
 			while(sc.hasNext())
-				translate(sc.nextLine());
+				System.out.println(translate(sc.nextLine()));
 			
 			sc.close();
 		} catch (FileNotFoundException e) {
@@ -53,7 +53,6 @@ public class SpanishToEnglish
 		StringBuilder translated = new StringBuilder();
 
 		for(String s : contents){
-			System.out.println(s);
 			if(pairs.containsKey(s)){
 				translated.append(pairs.get(s) + " ");
 			}
