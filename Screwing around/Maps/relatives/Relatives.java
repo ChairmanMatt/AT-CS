@@ -29,8 +29,8 @@ public class Relatives
 		
 		while(read.hasNext()){
 			String nam = read.nextLine();
-			System.out.print(nam + ": ");
-			System.out.println(getRelatives(nam));
+			System.out.print(nam + " ");
+			System.out.println(map.get(nam));
 		}
 	}
 
