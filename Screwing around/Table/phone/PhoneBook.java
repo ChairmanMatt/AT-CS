@@ -2,8 +2,10 @@ package phone;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Collections;
 import java.util.Hashtable;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class PhoneBook {
@@ -21,10 +23,11 @@ public class PhoneBook {
 		}
 		
 		load();
+		sort();
 	}
 
 	public PhoneBook() throws FileNotFoundException{
-		this(8);
+		this(10);
 	}
 
 	public void load() throws FileNotFoundException{
@@ -39,8 +42,7 @@ public class PhoneBook {
 	
 	public void add(Object o){
 		PhoneEntry p = (PhoneEntry) o;
-		System.out.println(p);
-
+		
 		map.get(p.hashCode() % numSlots).add(p);
 	}
 
@@ -98,6 +100,12 @@ public class PhoneBook {
 		return longest;
 	}
 
+	public void sort(){
+		for(int s : map.keySet())
+			Collections.sort(map.get(s));
+			
+	}
+	
 	public String toString(){
 		StringBuilder str = new StringBuilder();
 
@@ -119,6 +127,25 @@ public class PhoneBook {
 	public static void main(String[] args) throws FileNotFoundException{
 		PhoneBook p = new PhoneBook();
 		p.display();
+		
+		System.out.println("LOOK UP GUILLEN: ");
+		System.out.println(p.lookup("Guillen"));
+		
+		System.out.println("GET CAPACITY: ");
+		System.out.println(p.getCapacity());
+		
+		System.out.println("GET SIZE");
+		System.out.println(p.getSize());
+		
+		System.out.println("GET NUMBER NULL");
+		System.out.println(p.getNumberOfNulls());
+		
+		System.out.println("GET LONGEST LIST: ");
+		System.out.println(p.getLongestList());
+		
+		System.out.println("CHANGE NUMBER GUILLEN TO 6095020");
+		p.changeNumber("Guillen", "6095020");
+		System.out.println(p.lookup("Guillen"));
 	}
 
 }
