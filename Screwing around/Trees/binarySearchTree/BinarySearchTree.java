@@ -97,13 +97,12 @@ public class BinarySearchTree
 			inOrder(tree.getRight());
 			System.out.print(tree.getValue() + " ");
 			inOrder(tree.getLeft());
-
 		}
 	}
 
-	public int getNumLevels()
+	public void getNumLevels()
 	{
-		return getNumLevels(root);
+		System.out.println("GET NUM LEVELS: \n" + getNumLevels(root) + "\n");
 	}
 
 	private int getNumLevels(TreeNode tree)
@@ -116,25 +115,69 @@ public class BinarySearchTree
 			return 1+getNumLevels(tree.getRight());
 	}
 
+	public void getHeight(){
+		System.out.println("GET HEIGHT: \n"+ (getNumLevels(root)+1) + "\n");
+	}
+
+	//add getNumNodes, and isFull
+
+	public void getNumLeaves(){
+		System.out.println("GET NUM LEAVES: \n" + (getNumLeaves(root) / 2) +"\n");
+	}
+
+	private int getNumLeaves(TreeNode tree){
+		if(tree == null)
+			return 1;
+
+		return(getNumLeaves(tree.getLeft()) + getNumLeaves(tree.getRight()));
+	}
+
+	public void getWidth(){
+		System.out.println("GET WIDTH: \n" + (getWidth(root) + 1) +"\n");
+	}
+
+	private int getWidth(TreeNode tree){
+		if(tree == null)
+			return 1;
+
+		if(getWidth(tree.getLeft()) > getWidth(tree.getRight()))
+			return getWidth(tree.getLeft()) + 1;
+
+		return getWidth(tree.getRight()) + 1;
+	}
+
+	public void getNumNodes(){
+		System.out.println("GET NUM NODES: \n" + getNumNodes(root) +"\n");
+	}
+
+	private int getNumNodes(TreeNode tree){
+		if(tree == null)
+			return 0;
+
+		return 1 + getNumNodes(tree.getLeft()) + getNumNodes(tree.getRight());
+	}
+
+	public void isFull(){
+		System.out.println("IS FULL: \n" + isFull(root) +"\n");
+	}
+
+	private boolean isFull(TreeNode tree){
+		if(tree.getLeft() == null && tree.getRight() == null)
+			return true;
+
+		if(tree.getLeft() != null && tree.getRight() != null)
+			return isFull(tree.getLeft()) || isFull(tree.getRight());
+		
+		return false;
+
+	}
 
 
-	//add getNumLeaves, getWidth, getHeight, getNumNodes, and isFull
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	public void search(Comparable c){
+		
+	}
+	
 
 	//search
 

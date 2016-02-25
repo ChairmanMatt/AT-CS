@@ -7,21 +7,24 @@ public class BSTreeRunner
    public static void main( String args[] )
    {
  		BinarySearchTree bt = new BinarySearchTree();
- 		bt.add(new Integer(7));
- 		bt.add(new Integer(1));
- 		bt.add(new Integer(0));
- 		bt.add(new Integer(3));
- 		bt.add(new Integer(2));
- 		bt.add(new Integer(5));
- 		bt.add(new Integer(4));
- 		bt.add(new Integer(6));
- 		bt.add(new Integer(9));
- 		bt.add(new Integer(8));
- 		bt.add(new Integer(10));
+ 		bt.add(new Integer(90));
+ 		bt.add(new Integer(80));
+ 		bt.add(new Integer(70));
+ 		bt.add(new Integer(85));
+ 		bt.add(new Integer(100));
+ 		bt.add(new Integer(98));
+ 		bt.add(new Integer(120));
  		
  		bt.inOrder();
  		bt.preOrder();
  		bt.postOrder();
  		bt.revOrder();
+ 		
+ 		bt.getHeight();
+ 		bt.getWidth();
+ 		bt.getNumLeaves();
+ 		bt.getNumNodes();
+ 		bt.getNumLevels();
+ 		bt.isFull();
    }
 }
