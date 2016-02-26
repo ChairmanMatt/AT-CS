@@ -26,5 +26,6 @@ public class BSTreeRunner
  		bt.getNumNodes();
  		bt.getNumLevels();
  		bt.isFull();
+ 		System.out.println(bt.search(new Integer(120)));
    }
 }

@@ -167,17 +167,29 @@ public class BinarySearchTree
 
 		if(tree.getLeft() != null && tree.getRight() != null)
 			return isFull(tree.getLeft()) || isFull(tree.getRight());
-		
+
 		return false;
 
 	}
 
+	public boolean search(Comparable c){
+		return search(root, c);
 
-
-	public void search(Comparable c){
-		
 	}
-	
+
+	private boolean search(TreeNode tree, Comparable c){
+		if(tree == null)
+			return false;
+
+
+		if(tree.getValue().equals(c))
+			return true;
+
+		return (search(tree.getLeft(), c) || search (tree.getRight(), c));
+
+
+	}
+
 
 	//search
 
