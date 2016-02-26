@@ -1,6 +1,8 @@
 package binarySearchTree;
 
 import java.util.LinkedList;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class BinarySearchTree
 {
@@ -116,7 +118,7 @@ public class BinarySearchTree
 	}
 
 	public void getHeight(){
-		System.out.println("GET HEIGHT: \n"+ (getNumLevels(root)+1) + "\n");
+		System.out.println("GET HEIGHT: \n"+ (getNumLevels(root)-1) + "\n");
 	}
 
 	//add getNumNodes, and isFull
@@ -172,8 +174,8 @@ public class BinarySearchTree
 
 	}
 
-	public boolean search(Comparable c){
-		return search(root, c);
+	public void search(Comparable c){
+		System.out.println("SEARCH FOR " + c.toString() + "\n" + search(root, c)+"\n");
 
 	}
 
@@ -190,14 +192,57 @@ public class BinarySearchTree
 
 	}
 
+	public void maxNode(){
+		System.out.println("MAX NODE: \n"+maxNode(root, root.getValue())+"\n");
 
-	//search
+	}
 
-	//maxNode
+	private Comparable maxNode(TreeNode tree, Comparable c){
+		if(tree == null)
+			return c;
 
-	//minNode
+		if(tree.getValue().compareTo(c) > 0)
+			return maxNode(tree.getRight(), tree.getValue());
+
+		return maxNode(tree.getRight(), c);
+	}
+
+	public void minNode(){
+		System.out.println("MIN NODE: \n"+minNode(root, root.getValue())+"\n");
+
+	}
+
+	private Comparable minNode(TreeNode tree, Comparable c){
+		if(tree == null)
+			return c;
+
+		if(tree.getValue().compareTo(c) < 0)
+			return minNode(tree.getLeft(), tree.getValue());
+
+		return minNode(tree.getLeft(), c);
+	}
 
 	//level order
+	public void levelOrder(){
+
+	}
+
+	private TreeMap<Integer, TreeSet<String>> levelOrder(TreeNode tree, TreeMap<Integer, TreeSet<String>> map){
+		if(tree == null)
+			return map;
+
+		//you know how tall it is...how to find height from bottom?
+
+		
+		int x = getNumLevels(tree)-1;
+		
+		return levelOrder(tree.getLeft(), )
+
+
+	}
+
+
+
 
 	//display like a tree
 
