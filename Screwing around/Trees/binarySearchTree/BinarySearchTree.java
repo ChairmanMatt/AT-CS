@@ -227,7 +227,7 @@ public class BinarySearchTree
 
 	}
 
-	private TreeMap<Integer, TreeSet<String>> levelOrder(TreeNode tree, TreeMap<Integer, TreeSet<String>> map){
+	private void levelOrder(TreeNode tree, TreeMap<Integer, TreeSet<String>> map){
 		if(tree == null)
 			return map;
 
