@@ -1,8 +1,7 @@
 package binarySearchTree;
 
 import java.util.LinkedList;
-import java.util.TreeMap;
-import java.util.TreeSet;
+import java.util.Queue;
 
 public class BinarySearchTree
 {
@@ -89,16 +88,16 @@ public class BinarySearchTree
 	public void revOrder()
 	{
 		System.out.println("REV ORDER");
-		inOrder(root);
+		revOrder(root);
 		System.out.println("\n\n");
 	}
 
 	private void revOrder(TreeNode tree)
 	{
 		if (tree != null){
-			inOrder(tree.getRight());
+			revOrder(tree.getRight());
 			System.out.print(tree.getValue() + " ");
-			inOrder(tree.getLeft());
+			revOrder(tree.getLeft());
 		}
 	}
 
@@ -224,25 +223,32 @@ public class BinarySearchTree
 
 	//level order
 	public void levelOrder(){
-
+		System.out.println("LEVEL ORDER");
+		
+		Queue<Comparable> q = new LinkedList<Comparable>();
+		q.add(root.getValue());
+		
+		levelOrder(root, q);
+		
+		System.out.println(q);
+		
+		System.out.println("\n\n");		
 	}
-
-	private void levelOrder(TreeNode tree, TreeMap<Integer, TreeSet<String>> map){
+	
+	private void levelOrder(TreeNode tree, Queue<Comparable> list){
 		if(tree == null)
-			return map;
-
-		//you know how tall it is...how to find height from bottom?
-
+			return;
+		if(tree.getLeft() != null)
+		list.add(tree.getLeft().getValue());
 		
-		int x = getNumLevels(tree)-1;
+		if(tree.getRight() != null)
+		list.add(tree.getRight().getValue());
 		
-		return levelOrder(tree.getLeft(), )
-
-
+		levelOrder(tree.getLeft(), list);
+		
+		levelOrder(tree.getRight(), list);
+	
 	}
-
-
-
 
 	//display like a tree
 
@@ -251,11 +257,14 @@ public class BinarySearchTree
 
 	public String toString()
 	{
-		return "";
+		return toString(root);
 	}
 
 	private String toString(TreeNode tree)
 	{
-		return "";
+		if(tree == null)
+			return "";
+		
+		return tree.getValue().toString() + " " + toString(tree.getLeft())+toString(tree.getRight());
 	}
 }

@@ -1,7 +1,5 @@
 package binarySearchTree;
 
-import static java.lang.System.*;
-
 public class BSTreeRunner
 {
 	public static void main( String args[] )
@@ -29,5 +27,9 @@ public class BSTreeRunner
 		bt.search(new Integer(120));
 		bt.maxNode();
 		bt.minNode();
+		bt.levelOrder();
+		
+		System.out.println(bt.toString());
+		
 	}
 }
