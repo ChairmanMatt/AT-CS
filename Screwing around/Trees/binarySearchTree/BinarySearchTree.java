@@ -120,8 +120,6 @@ public class BinarySearchTree
 		System.out.println("GET HEIGHT: \n"+ (getNumLevels(root)-1) + "\n");
 	}
 
-	//add getNumNodes, and isFull
-
 	public void getNumLeaves(){
 		System.out.println("GET NUM LEAVES: \n" + (getNumLeaves(root) / 2) +"\n");
 	}
@@ -167,7 +165,7 @@ public class BinarySearchTree
 			return true;
 
 		if(tree.getLeft() != null && tree.getRight() != null)
-			return isFull(tree.getLeft()) || isFull(tree.getRight());
+			return isFull(tree.getLeft()) && isFull(tree.getRight());
 
 		return false;
 
@@ -224,47 +222,84 @@ public class BinarySearchTree
 	//level order
 	public void levelOrder(){
 		System.out.println("LEVEL ORDER");
-		
+
 		Queue<Comparable> q = new LinkedList<Comparable>();
 		q.add(root.getValue());
-		
+
 		levelOrder(root, q);
-		
+
 		System.out.println(q);
-		
+
 		System.out.println("\n\n");		
 	}
-	
+
 	private void levelOrder(TreeNode tree, Queue<Comparable> list){
 		if(tree == null)
 			return;
 		if(tree.getLeft() != null)
-		list.add(tree.getLeft().getValue());
-		
+			list.add(tree.getLeft().getValue());
+
 		if(tree.getRight() != null)
-		list.add(tree.getRight().getValue());
-		
+			list.add(tree.getRight().getValue());
+
 		levelOrder(tree.getLeft(), list);
-		
+
 		levelOrder(tree.getRight(), list);
-	
 	}
 
-	//display like a tree
+	public void remove(Comparable val){
+		root = remove(val, root);
+	}
 
-	//remove
+	private TreeNode remove(Comparable val, TreeNode tree){
+		if(tree != null){
+			int dirTest = val.compareTo(tree.getValue());
 
+			if(dirTest < 0)
+				tree.setLeft(remove(val, tree.getLeft()));
+			else if (dirTest > 0)
+				tree.setRight(remove(val, tree.getRight()));
+			else{
+				if(tree.getRight() == null)
+					tree = tree.getLeft();
+				else{
+					TreeNode successor = getSmallest(tree.getRight());
+					tree.setValue(successor.getValue());
+					tree.setRight(remove(successor.getValue(), tree.getRight()));
+				}
+			}
+		}
+
+		return tree;
+	}
+
+	private TreeNode getSmallest(TreeNode tree){
+		if(tree.getLeft() == null)
+			return tree;
+
+		return tree.getLeft();
+	}
 
 	public String toString()
 	{
-		return toString(root);
+		String str = "";
+		for(int x = 0; x<getNumLevels(root); x++){
+			str += toString(root, x+1);
+			str+="\n";
+			
+		}
+
+		return str;
 	}
 
-	private String toString(TreeNode tree)
+	private String toString(TreeNode tree, int level)
 	{
 		if(tree == null)
 			return "";
-		
-		return tree.getValue().toString() + " " + toString(tree.getLeft())+toString(tree.getRight());
+
+		if(level == 1)
+			return tree.getValue().toString() + " "; 
+
+		return toString(tree.getLeft(), level-1) + toString(tree.getRight(), level-1);
 	}
 }
