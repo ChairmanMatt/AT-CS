@@ -12,6 +12,10 @@ public class BinarySearchTree
 		root = null;
 	}
 
+	public TreeNode root(){
+		return root;
+	}
+	
 	public void add(Comparable val)
 	{
 		root = add(val, root);
@@ -47,14 +51,14 @@ public class BinarySearchTree
 	{
 		if (tree != null){
 			inOrder(tree.getLeft());
-			System.out.print(tree.getValue() + " ");
+			System.out.print(tree.getValue() + " | ");
 			inOrder(tree.getRight());
 		}
 	}
 
 	public void preOrder(){
 		System.out.println("PRE");
-		System.out.print(root.getValue()+ " ");
+		System.out.print(root.getValue()+ " | ");
 		preOrder(root.getLeft());
 		preOrder(root.getRight());
 
@@ -63,7 +67,7 @@ public class BinarySearchTree
 
 	private void preOrder(TreeNode tree){
 		if(tree != null){
-			System.out.print(tree.getValue() + " ");
+			System.out.print(tree.getValue() + " | ");
 			preOrder(tree.getLeft());
 			preOrder(tree.getRight());
 		}
@@ -80,7 +84,7 @@ public class BinarySearchTree
 		if(tree != null){
 			postOrder(tree.getLeft());
 			postOrder(tree.getRight());
-			System.out.print(tree.getValue() + " ");
+			System.out.print(tree.getValue() + " | ");
 		}
 	}
 
@@ -96,7 +100,7 @@ public class BinarySearchTree
 	{
 		if (tree != null){
 			revOrder(tree.getRight());
-			System.out.print(tree.getValue() + " ");
+			System.out.print(tree.getValue() + " | ");
 			revOrder(tree.getLeft());
 		}
 	}
@@ -173,20 +177,18 @@ public class BinarySearchTree
 
 	public void search(Comparable c){
 		System.out.println("SEARCH FOR " + c.toString() + "\n" + search(root, c)+"\n");
-
+//		if(search(root, c))
+			
 	}
 
 	private boolean search(TreeNode tree, Comparable c){
 		if(tree == null)
 			return false;
 
-
 		if(tree.getValue().equals(c))
 			return true;
 
 		return (search(tree.getLeft(), c) || search (tree.getRight(), c));
-
-
 	}
 
 	public void maxNode(){
@@ -298,7 +300,7 @@ public class BinarySearchTree
 			return "";
 
 		if(level == 1)
-			return tree.getValue().toString() + " "; 
+			return tree.getValue().toString() + " | "; 
 
 		return toString(tree.getLeft(), level-1) + toString(tree.getRight(), level-1);
 	}
