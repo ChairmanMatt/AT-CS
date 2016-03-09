@@ -4,7 +4,7 @@ import binarySearchTree.TreeNode;
 
 public class HistoTree
 {
-   private HistoNode root;
+	private HistoNode root;
 
 	public HistoTree( )
 	{
@@ -25,25 +25,32 @@ public class HistoTree
 			tree = new HistoNode(data, 1, null, null);
 			return tree;
 		}
-		
+
 		int dirTest = data.compareTo(tree.getData());
 
 		if(dirTest < 0)
 			tree.setLeft(add(data, tree.getLeft()));
 
-		if(dirTest < 0)
-			tree.setRight(add(data, tree.getLeft()));
-		
+
+		if(dirTest > 0)
+			tree.setRight(add(data, tree.getRight()));
+
 		else
 			tree.setDataCount(tree.getDataCount() + 1);
-		
+
+		//		System.out.println(tree.getData().toString());
+
 		return tree;
-		
 	}
 
 	public HistoNode search(Comparable data)
 	{
-		return search(data, root);
+		HistoNode ht = search(data, root);
+
+		if(ht != null)
+			return search(data, root);
+		
+		return new HistoNode(data + " not found", 0, null, null);
 	}
 
 	private HistoNode search(Comparable data, HistoNode tree)
@@ -56,15 +63,16 @@ public class HistoTree
 		if(dirTest < 0)
 			return search(data, tree.getLeft());
 
-		if(dirTest < 0)
-			return search(data, tree.getLeft());
-		
+		if(dirTest > 0)
+			return search(data, tree.getRight());
+
 		else
 			return tree;
 	}
 
 	public String toString()
 	{
+
 		return toString(root);
 	}
 
@@ -72,7 +80,7 @@ public class HistoTree
 	{
 		if(tree == null)
 			return "";
-		
-		return tree.getData().toString() + " | " + toString(tree.getLeft()) + toString(tree.getRight());
+
+		return tree.getData().toString() + ", " + tree.getDataCount() + " | " + toString(tree.getLeft()) + toString(tree.getRight());
 	}
 }

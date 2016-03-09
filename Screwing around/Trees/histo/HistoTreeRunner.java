@@ -21,6 +21,8 @@ public class HistoTreeRunner
 		test.addData('S');
 		test.addData('E');
 		test.addData('A');
+		
+		System.out.println(test.search('Z').getData());
 		System.out.println(test);
 
 		test = new HistoTree();

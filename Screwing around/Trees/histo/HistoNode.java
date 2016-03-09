@@ -54,6 +54,10 @@ public class HistoNode
 	{
 		right=rt;
 	}
+	
+	public String toString(){
+		return data.toString();
+	}
 }
 
 
