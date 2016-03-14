@@ -31,14 +31,11 @@ public class HistoTree
 		if(dirTest < 0)
 			tree.setLeft(add(data, tree.getLeft()));
 
-
-		if(dirTest > 0)
+		else if(dirTest > 0)
 			tree.setRight(add(data, tree.getRight()));
 
 		else
 			tree.setDataCount(tree.getDataCount() + 1);
-
-		//		System.out.println(tree.getData().toString());
 
 		return tree;
 	}
