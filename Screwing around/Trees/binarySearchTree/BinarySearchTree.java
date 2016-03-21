@@ -16,6 +16,10 @@ public class BinarySearchTree
 		return root;
 	}
 	
+	public void setRoot(TreeNode t){
+		root = t;
+	}
+	
 	public void add(Comparable val)
 	{
 		root = add(val, root);
