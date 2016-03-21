@@ -35,7 +35,7 @@ public class BinarySearchTree
 		int dirTest = val.compareTo(treeValue);
 
 
-		if(dirTest <= 0)
+		if(dirTest < 0)
 			tree.setLeft(add(val, tree.getLeft()));
 
 		else if(dirTest > 0)
