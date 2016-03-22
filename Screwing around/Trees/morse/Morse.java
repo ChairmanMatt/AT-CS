@@ -4,7 +4,7 @@ public class Morse implements Comparable{
 
 	private int index;
 	private char letter;
-	
+
 	public Morse(int ind, char let){
 		index = ind;
 		letter = let;
@@ -13,17 +13,22 @@ public class Morse implements Comparable{
 	public char getLetter(){
 		return letter;
 	}
-	
+
 	public int getIndex(){
 		return index;
 	}
-	
+
 	public int compareTo(Object o) {
 		// TODO Auto-generated method stub
-		return index - ((Morse)o).getIndex();
+		if(index-((Morse)o).getIndex() > 0)
+			return 1;
+		if(index-((Morse)o).getIndex() < 0)
+			return -1;
+		
+		return 0;
 	}
-	
-	
+
+
 	public String toString(){
 		return letter + "";
 	}
