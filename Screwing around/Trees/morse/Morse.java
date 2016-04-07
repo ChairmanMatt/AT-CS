@@ -19,13 +19,14 @@ public class Morse implements Comparable{
 	}
 
 	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
-		if(index-((Morse)o).getIndex() > 0)
-			return 1;
-		if(index-((Morse)o).getIndex() < 0)
-			return -1;
+		return (letter-((Morse)o).getLetter());
 		
-		return 0;
+//		if(index-((Morse)o).getIndex() > 0)
+//			return 1;
+//		if(index-((Morse)o).getIndex() < 0)
+//			return -1;
+//		
+//		return 0;
 	}
 
 

@@ -181,7 +181,6 @@ public class BinarySearchTree
 
 	public void search(Comparable c){
 		System.out.println("SEARCH FOR " + c.toString() + "\n" + search(root, c)+"\n");
-//		if(search(root, c))
 			
 	}
 
