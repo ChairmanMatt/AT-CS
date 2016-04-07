@@ -22,55 +22,11 @@ public class MorseTester {
 
 		System.out.println(mt.bsTree);
 
-		System.out.println(mt.toEng(".... . .-.. .-.. --- .-- --- .-. .-.. -.."));
-		mt.findMorse('C');
+		System.out.println(mt.bsTree.morseToEng(".... . .-.. .-.. --- .-- --- .-. .-.. -.."));
+		System.out.println(mt.bsTree.engToMorse("HELLO WORLD"));
 		
 	}
 
-	public String toEng(String str){
-		TreeNode node;
-
-		String eng = "";
-		String[] parts = str.split(" ");
-
-		for(int x = 0; x < parts.length; x++){
-			node = bsTree.root();
-
-			String sc = parts[x];
-
-			for(int s = 0; s< sc.length(); s++){
-				if(sc.charAt(s)=='.')
-					node = node.getRight();
-				else if(sc.charAt(s)=='-')
-					node = node.getLeft();
-			}
-
-			eng += node.toString();
-		}
-		return eng;
-	}
-
-//	public String toMorse(String str){
-//		String morse = "";
-//		
-//		String[] parts = str.split(" ");
-//		for(int x = 0; x< parts.length; x++){
-//			String p = parts[x];
-//			for(int a = 0; a < p.length(); a++){
-//				
-//			}
-//			
-//		}
-//		
-//	}
 	
-	public void findMorse(char c){
-		String toRet = "";
-		Morse mo = new Morse(LETTERS.indexOf(c+""),c);
-		
-		TreeNode t = bsTree.search(c);
-		
-//		return toRet;
-	}
 	
 }

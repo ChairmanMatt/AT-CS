@@ -29,29 +29,65 @@ public class MorseBalancedTree extends BinarySearchTree{
 
 	
 	public TreeNode search(char c){
-		return search(root(), c);
+		return search(root(), c, "");
 	}
 	
-	public TreeNode search(TreeNode tree, char c){
+	private String morse = "";
+	
+	private TreeNode search(TreeNode tree, char c, String s){
 		if(tree == null)
 			return null;
 		
-		if(((Morse)tree.getValue()).getLetter()==c)
+		if(((Morse)tree.getValue()).getLetter()==c){
+			morse = s;
 			return tree;
+		}
 			
-		if (search(tree.getLeft(), c) != null)
-			return tree.getLeft();
+		if (search(tree.getLeft(), c, s+"-") != null)
+			return search(tree.getLeft(), c, s+"-");
 		
-		if(search(tree.getRight(), c) != null)
-			return tree.getRight();
+		if(search(tree.getRight(), c, s+".") != null)
+			return search(tree.getRight(), c, s+".");
 		
 		return null;
 	}
 
+	public String morseToEng(String str){
+		TreeNode node;
+
+		String eng = "";
+		String[] parts = str.split(" ");
+
+		for(int x = 0; x < parts.length; x++){
+			node = root();
+
+			String sc = parts[x];
+
+			for(int s = 0; s< sc.length(); s++){
+				if(sc.charAt(s)=='.')
+					node = node.getRight();
+				else if(sc.charAt(s)=='-')
+					node = node.getLeft();
+			}
+
+			eng += node.toString();
+		}
+		return eng;
+	}
 	
-	public String toEng(String str){
+	public String engToMorse(String str){
+		String[] parts = str.toUpperCase().split(" ");
 		
+		String translated = "";
 		
+		for(int arrIn = 0; arrIn < parts.length; arrIn++){
+			for(int strIn = 0; strIn < parts[arrIn].length(); strIn++){
+				search(root(),parts[arrIn].charAt(strIn), "");
+				translated+=morse + " ";
+			}
+		}
+		
+		return translated;
 	}
 	
 }
