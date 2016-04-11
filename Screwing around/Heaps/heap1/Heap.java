@@ -35,7 +35,7 @@ public class Heap
 	{
 		list.set(1,list.get(list.size()-1));
 		list.remove(list.size()-1);
-		swapDown(list.get(1));
+		swapDown(1);
 	}
 
 	public void swapDown(int top)
@@ -44,12 +44,13 @@ public class Heap
 		if(top*2 >= list.size())
 			return;
 		
-		System.out.print("SD");
-		
 		if(list.get(top*2) > list.get(top)){
 			swap(top*2, top);
 			swapDown(top*2);
 		}
+		
+		if(top*2+1 >= list.size())
+			return;
 		
 		else if(list.get(top*2 + 1) > list.get(top)){
 			swap(top*2 + 1, top);
@@ -62,14 +63,13 @@ public class Heap
 	private void swap(int start, int finish)
 	{
 		int temp = list.get(finish);
-		
 		list.set(finish, list.get(start));
 		list.set(start,  temp);
 	}
 
 	public void print()
 	{
-		System.out.println("\n\nPRINTING THE HEAP!\n\n");
+		System.out.println("\n\nPRINTING THE HEAP!");
 //		System.out.println(print(1, ""));
 		System.out.println(toString());
 	}
