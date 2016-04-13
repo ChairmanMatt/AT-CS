@@ -67,25 +67,6 @@ public class Heap
 		list.set(start,  temp);
 	}
 
-	public void print()
-	{
-		System.out.println("\n\nPRINTING THE HEAP!");
-//		System.out.println(print(1, ""));
-		System.out.println(toString());
-	}
-
-	public String print(int ind, String s){
-		if(ind >= list.size())
-			return s+"";
-		
-		s+=list.get(ind)+" ";
-		if(ind%2 != 0)
-			s+="\n";
-		
-		
-		return(print(ind+1, s));
-	}
-	
 	public String toString()
 	{
 		return list.toString();
