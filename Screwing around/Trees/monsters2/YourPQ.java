@@ -1,14 +1,7 @@
 package monsters2;
 
-import java.util.Queue;
-import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Scanner;
-import java.util.PriorityQueue;
-
-
 
 public class YourPQ
 {
@@ -23,24 +16,14 @@ public class YourPQ
 
 	}
 
-	public void add(Monster value)
-	{
-		list.add(value);
+	public void add(Monster m){
+		list.add(m);
 		swapUp(list.size()-1);
 	}
 
 	public Object getMin()
 	{
 		return list.get(1);
-	}
-
-	public String getNaturalOrder()
-	{
-		String output="";
-
-
-
-		return output;		
 	}
 
 	//write a toString method
@@ -50,7 +33,7 @@ public class YourPQ
 		if(bot <= 1)
 			return;
 
-		if(list.get(bot/2).compareTo(list.get(bot)) < 0){
+		if(list.get(bot/2).compareTo(list.get(bot)) > 0){
 			swap(bot, bot/2);
 		}
 
@@ -58,9 +41,9 @@ public class YourPQ
 	}
 
 	public Object removeMin(){
-		Monster temp = list.get(list.size()-1);
-		list.set(1,list.get(list.size()-1));
-		list.remove(list.size()-1);
+		Monster temp = list.get(1);
+		swap(1, list.size()-1);
+		list.remove(1);
 		swapDown(1);
 
 		return temp;
@@ -71,7 +54,7 @@ public class YourPQ
 		if(top*2 >= list.size())
 			return;
 
-		if(list.get(top*2).compareTo(list.get(top)) > 0){
+		if(list.get(top*2).compareTo(list.get(top)) < 0){
 			swap(top*2, top);
 			swapDown(top*2);
 		}
@@ -79,7 +62,7 @@ public class YourPQ
 		if(top*2+1 >= list.size())
 			return;
 
-		else if(list.get(top*2 + 1).compareTo(list.get(top)) > 0){
+		else if(list.get(top*2 + 1).compareTo(list.get(top)) < 0){
 			swap(top*2 + 1, top);
 			swapDown(top*2+1);
 		}
@@ -93,7 +76,7 @@ public class YourPQ
 
 	public String toString()
 	{
-		return list.toString();
+		return list.toString()+"\n";
 	}
 
 }
