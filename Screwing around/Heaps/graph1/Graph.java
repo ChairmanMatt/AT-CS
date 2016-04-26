@@ -38,22 +38,26 @@ public class Graph
 
 	public boolean check(String first, String second, String placesUsed)
 	{
+//		System.out.println("RUN ONCE");
+//		System.out.println(first + " " + second + " " + placesUsed);
 		//base case
-		if(! contains(first) && ! contains(second))
+		if(! contains(first) && ! contains(second)){
+			System.out.println("NOT CONTAINED");
 			return false;
-		if(placesUsed.indexOf(first)!=0)
+		}
+		if(placesUsed.indexOf(first) != placesUsed.lastIndexOf(first))
 			return false;
 
 		if(first.equals(second)){
-			System.out.println("ROUTE FOUND: "+placesUsed+first);
+			System.out.println("ROUTE FOUND: "+placesUsed);
 			return true;
 		}
 
 		String connections = map.get(first);
 		for(int x = 0; x<connections.length(); x++){
-			System.out.println("AAAA");
+//			System.out.println("AAAA");
 			if(check(connections.charAt(x)+"", second, placesUsed+connections.charAt(x))){
-				System.out.println("ROUTE FOUND: " + placesUsed+connections.charAt(x));
+//				System.out.println("ROUTE FOUND: " + placesUsed+connections.charAt(x));
 				return true;
 			}
 		}
