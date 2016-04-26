@@ -8,7 +8,7 @@ public class Graph
 	private TreeMap<String, String> map;
 	private boolean yahOrNay;
 
-	public Graph(String line)
+	public Graph(String line, String sec)
 	{
 		map = new TreeMap<String, String>();
 
@@ -29,6 +29,9 @@ public class Graph
 			map.put(temp.substring(1), oldLinks+temp.substring(0,1));
 		}
 		System.out.println(map);
+		
+		if(! check(sec.substring(0, 1), sec.substring(1), sec.substring(0,1)))
+			System.out.println("NO SOLUTION FOUND");
 	}
 
 	public boolean contains(String letter)
@@ -38,8 +41,6 @@ public class Graph
 
 	public boolean check(String first, String second, String placesUsed)
 	{
-//		System.out.println("RUN ONCE");
-//		System.out.println(first + " " + second + " " + placesUsed);
 		//base case
 		if(! contains(first) && ! contains(second)){
 			System.out.println("NOT CONTAINED");
@@ -55,9 +56,7 @@ public class Graph
 
 		String connections = map.get(first);
 		for(int x = 0; x<connections.length(); x++){
-//			System.out.println("AAAA");
 			if(check(connections.charAt(x)+"", second, placesUsed+connections.charAt(x))){
-//				System.out.println("ROUTE FOUND: " + placesUsed+connections.charAt(x));
 				return true;
 			}
 		}

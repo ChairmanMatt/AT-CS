@@ -14,11 +14,13 @@ public class GraphRunner
 		Graph g;
 		for(int x=0; x<howManyTimes; x++)
 		{
-			g = new Graph(file.nextLine());
+			String line = file.nextLine();
+			String rte = file.nextLine();
 			
-			String s = file.nextLine();
+			g = new Graph(line, rte);
 			
-			g.check(s.substring(0, 1), s.substring(1), "");
+			
+
 		}
 	}
 }
