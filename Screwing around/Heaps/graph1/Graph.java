@@ -29,9 +29,9 @@ public class Graph
 			map.put(temp.substring(1), oldLinks+temp.substring(0,1));
 		}
 		System.out.println(map);
-		
-		if(! check(sec.substring(0, 1), sec.substring(1), sec.substring(0,1)))
-			System.out.println("NO SOLUTION FOUND");
+
+		check(sec.substring(0, 1), sec.substring(1), sec.substring(0,1));
+		System.out.println("\n");
 	}
 
 	public boolean contains(String letter)
@@ -42,10 +42,10 @@ public class Graph
 	public boolean check(String first, String second, String placesUsed)
 	{
 		//base case
-		if(! contains(first) && ! contains(second)){
-			System.out.println("NOT CONTAINED");
-			return false;
-		}
+		//		if(! contains(first) && ! contains(second)){
+		//			System.out.println("NOT CONTAINED");
+		//			return false;
+		//		}
 		if(placesUsed.indexOf(first) != placesUsed.lastIndexOf(first))
 			return false;
 
@@ -56,11 +56,10 @@ public class Graph
 
 		String connections = map.get(first);
 		for(int x = 0; x<connections.length(); x++){
-			if(check(connections.charAt(x)+"", second, placesUsed+connections.charAt(x))){
-				return true;
-			}
+			check(connections.charAt(x)+"", second, placesUsed+connections.charAt(x));
 		}
-		
+
+
 		return false;
 	}
 
